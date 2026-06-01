@@ -50,25 +50,6 @@ src/
 ---
 
 
-
-## Environment Variables
-
-Create a `.env` file:
-
-```env
-PORT=3000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_access_token_secret
-
-JWT_REFRESH_SECRET=your_refresh_token_secret
-
-FRONTEND_URL=http://localhost:5173
-```
-
----
-
 ## API Routes
 
 ### Authentication
