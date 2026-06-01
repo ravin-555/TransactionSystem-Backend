@@ -50,7 +50,7 @@ export const login = async (req,res) => {
     // jwt token  creation (digital signature)
     const acesstoken= jwt.sign(
         {id:user._id,accountNumber:user.accountNumber,role:user.role}, process.env.JWT_SECRET ,
-        {expiresIn:'3m'}
+        {expiresIn:'1h'}
     );
     console.log("jwt:"+acesstoken);
     
@@ -112,7 +112,7 @@ export const refreshToken = (req, res) => {
     const newAccessToken = jwt.sign(
         { id: decoded.id , role:decoded.role, accountNumber: decoded.accountNumber},
         process.env.JWT_SECRET,
-        { expiresIn: "1m" }
+        { expiresIn: "1h" }
     );
 
     return res.status(200).json({
