@@ -18,7 +18,7 @@ app.use(express.json());
 
 // to handle CORS (Cross-Origin Resource Sharing) issues when frontend and backend are on different domains or ports
 const corsOptions = {
-    origin: 'http://localhost:5173', // allow requests from this origin (frontend)
+    origin: process.env.FRONTEND_URL, // allow requests from this origin (frontend)
     methods: 'GET,POST,PUT,DELETE',
     credentials: true, // This enables the Access-Control-Allow-Credentials header
     allowedHeaders: ["Content-Type", "Authorization", "Idempotency-Key"],
