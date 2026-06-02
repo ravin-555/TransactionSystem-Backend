@@ -59,12 +59,12 @@ export const login = async (req,res) => {
         process.env.REFRESH_SECRET, // sewcret key for signing the token
         {expiresIn:'7d'} // this token will be used to get a new access token when the old one expires (refresh token)
     )
-
+    const isproduction = process.env.NODE_ENV === 'production';
     // store the refresh token in htttp only cookie for security
     res.cookie('refreshToken',refreshToken,{
         httpOnly:true,
-        secure: false, // true in production (HTTPS)
-        sameSite: 'strict', // to prevent CSRF attacks
+        secure: isproduction, // true in production (HTTPS)
+        sameSite: isproduction ? 'none' : 'lax', // to allow cross-site cookies in production
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     })
     
