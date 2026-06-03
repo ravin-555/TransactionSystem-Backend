@@ -64,7 +64,7 @@ export const login = async (req,res) => {
     res.cookie('refreshToken',refreshToken,{
         httpOnly:true,
         secure: isproduction, // true in production (HTTPS)
-        sameSite: isproduction ? 'none' : 'lax', // to allow cross-site cookies in production
+        sameSite: isproduction ? "none" : "lax", // to allow cross-site cookies in production
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     })
     
