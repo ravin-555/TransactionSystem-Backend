@@ -13,6 +13,8 @@ const app = express();
 dotenv.config();
 // connect to db
 connectDB();
+// set trust proxy for rate limiting to work correctly behind proxies (like in production with load balancers)
+app.set('trust proxy', 1);
 //  Route level Middlewares that applies to the routes only
 app.use(express.json());
 
