@@ -51,7 +51,7 @@ export const reversalService = async (adminId, transactionId) => {
         // delete the previous transaction
         const deleted=await Transaction.findByIdAndDelete(tx._id).session(session);
         
-        const reversaluser = await User.findOne({accountNumber: tx.toAccount}).session(session);
+        const reversaluser = await User.findOne({_id: tx.initiatedAccount}).session(session);
         const afterbalance= reversaluser.balance - tx.amount;
 
         // 4. Create reversal transaction
